@@ -56,9 +56,9 @@ void FCFS() {
 	    TWT += get<4>(times[i]);
 	}
 
-	cout << "\nProcess No.  Arrival Time  Burst Time  Completion Time  Turn-around Time  Waiting Time\n";
+	cout << "\nProcess No.\tArrival Time\tBurst Time\tCompletion Time\t\tTurn-around Time\tWaiting Time\n";
 	for(i=0;i<n;i++){
-		cout << "    " << i+1 << "            " << get<0>(times[i]) << "             " << get<1>(times[i]) << "             " << get<2>(times[i]) << "               " << get<3>(times[i]) << "                " << get<4>(times[i]) << "\n";
+		cout << i+1 << "\t\t" << get<0>(times[i]) << "\t\t" << get<1>(times[i]) << "\t\t" << get<2>(times[i]) << "\t\t\t" << get<3>(times[i]) << "\t\t\t" << get<4>(times[i]) << "\n";
 	}
 	
 	TAT = TAT/(1.0*n);    // Average TAT
