@@ -13,6 +13,9 @@ void Priority_preemptive(){
 	vector<tuple<int, int, int, int, int, int>>times(n); // {at, bt, priority ct, tat, wt}
 	
 	cout << "Enter the Arrival time and Burst time respectively of " << n << " programs:\n";
+
+    int bt[n];  // Burst time
+
 	for(i=0;i<n;i++){
 	    int t;
 		cout << "Arrival Time: ";
@@ -29,6 +32,7 @@ void Priority_preemptive(){
 			cin>>t;
 		}
 	    get<1>(times[i])=t;  // Burst time
+        bt[i] = t;
         cout << "Priority(0 means highest priority): ";
 	    cin>>t;
 		while(t<0){
@@ -41,7 +45,42 @@ void Priority_preemptive(){
 	    get<5>(times[i])=0;  // Waiting time
 	}
     
+    int time = 0;
 
+    while(1){
+        int priority = -1;
+        int mi = INT_MAX;
+        int c=0;
+        for(i=0;i<n;i++){
+            if(bt[i]==0)c++;
+            mi = min(mi, get<0>(times[i]));
+            if(get<0>(times[i])<=time && bt[i]!=0){
+                if(priority == -1){
+                    priority = i;
+                }
+                else{
+                    if(get<2>(times[i])<get<2>(times[priority])){
+                        priority = i;
+                    }
+                    else if(get<2>(times[i]) == get<2>(times[priority]) && get<0>(times[i]) < get<0>(times[priority])){
+                        priority = i;
+                    }
+                }
+            }
+        }
+        if(c==n)break;
+        if(priority == -1){
+            time = mi;
+            continue;
+        }
+        bt[priority]--;
+        time++;
+        if(bt[priority]==0){
+            get<3>(times[priority]) = time; // CT
+            get<4>(times[priority]) = get<3>(times[priority]) - get<0>(times[priority]);
+            get<5>(times[priority]) = get<4>(times[priority]) - get<1>(times[priority]);
+        }
+    }
 	
 	double TAT=0,TWT=0;
 	
@@ -68,3 +107,4 @@ int main(){
 	Priority_preemptive();
 	return 0;
 }
+
