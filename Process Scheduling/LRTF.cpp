@@ -6,7 +6,7 @@ using namespace std;
 class Process //class for processes
 {
 public:
-    int a_t, b_t, w_t, ta_t, rem_t, p_no, c_t;
+    int a_t, b_t, w_t, ta_t, rem_t, p_no, c_t, priority;
     bool isdone = false;
 };
 
@@ -59,7 +59,7 @@ void LRTF()
                 l = k;
             }
         }
-        p[l].rem_t--;
+        p[l].rem_t--;       // execute process for 1 second
         cur_t++;
         if (p[l].rem_t == 0) //if the process completes
         {
