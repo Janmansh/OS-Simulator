@@ -1,4 +1,4 @@
-//Longest remaining time first scheduling program
+//Shortest remaining time first scheduling program
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -6,7 +6,7 @@ using namespace std;
 class Process //class for processes
 {
 public:
-    int a_t, b_t, w_t, ta_t, rem_t, p_no, c_t;
+    int a_t, b_t, w_t, ta_t, rem_t, p_no, c_t, priority;
     bool isdone = false;
 };
 
@@ -50,8 +50,8 @@ void SRTF()
     float sum_tat = 0.0, sum_wt = 0.0;
     while (finished != n) //until every process finishes
     {
-        m = 1e9;
-        for (k = 0; p[k].a_t <= cur_t && k < n; k++) //check which process has the highest remaining time
+        m = INT_MAX;
+        for (k = 0; p[k].a_t <= cur_t && k < n; k++) //check which process has the Lowest remaining time
         {
             if (p[k].rem_t < m && p[k].isdone == false)
             {
@@ -59,7 +59,7 @@ void SRTF()
                 l = k;
             }
         }
-        p[l].rem_t--;
+        p[l].rem_t--;       // execute process for 1 second
         cur_t++;
         if (p[l].rem_t == 0) //if the process completes
         {
