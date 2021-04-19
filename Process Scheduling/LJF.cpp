@@ -6,7 +6,7 @@ using namespace std;
 class Process //class for processes
 {
 public:
-    int a_t, b_t, w_t, ta_t, p_no, c_t;
+    int a_t, b_t, w_t, ta_t, p_no, c_t, priority, rem_t;
     bool isdone = false;
 };
 
@@ -58,7 +58,7 @@ void LJF()
                 k = i;
             }
         }
-        if (i < n && k == -1)
+        if (i < n && k == -1)       // If no process arrived, increase time
         {
             t = p[i].a_t;
             continue;
