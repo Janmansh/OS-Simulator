@@ -1,4 +1,4 @@
-//Longest Job First
+//Priority Scheduling Non-Preemptive
 #include <bits/stdc++.h>
 
 using namespace std;
