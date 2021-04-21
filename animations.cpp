@@ -34,9 +34,9 @@ int main_animation() {
     cout << WHITE " * " CYAN "Addhyan Malhotra " YELLOW "191CS202" << endl;
     cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
     cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;
-    cout << WHITE " * " CYAN "Addhyan Malhotra " YELLOW "191CS202" << endl;
-    cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
-    cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;
+    cout << WHITE " * " CYAN "Anupam Lal       " YELLOW "191CS209" << endl;
+    cout << WHITE " * " CYAN "Aggarwal Janmansh" YELLOW "191CS205" << endl;
+    cout << WHITE " * " CYAN "Aditya rudra     " YELLOW "191CS201" << endl;
     cout << WHITE " * " CYAN "Addhyan Malhotra " YELLOW "191CS202" << endl;
     cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
     cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;

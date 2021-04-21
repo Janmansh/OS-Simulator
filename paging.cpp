@@ -348,12 +348,6 @@ void fifo(int num_frames){
 
 // driver code
 int paging () {
-
-    // get user input
-    printf("\n\e[4mPROGRAM TO IMPLEMENT PAGE REPLACEMENT ALGOS\x1b[0m\n\n");
-    printf("* This programs simulates FIFO and LRU\n");
-    printf("* page replacement algorithms\n");
-    printf("* Name \t\t: Addhyan Malhotra\n* Roll Number   : 191CS202\n\n");
     
     // declare some common var
     int algo, num_frames;
