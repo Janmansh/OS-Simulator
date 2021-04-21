@@ -1,3 +1,11 @@
+/**
+ * @author: Janmansh Agarwal 
+ * @course: Operating Systems Lab.
+ * @course_id: CS255
+ * @roll:   191CS205
+ *   
+ * */
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -103,8 +111,4 @@ void Priority_preemptive(){
 	return;
 }
 
-int main(){
-	Priority_preemptive();
-	return 0;
-}
 

@@ -35,7 +35,7 @@ int main_animation() {
     cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
     cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;
     cout << WHITE " * " CYAN "Anupam Lal       " YELLOW "191CS209" << endl;
-    cout << WHITE " * " CYAN "Aggarwal Janmansh" YELLOW "191CS205" << endl;
+    cout << WHITE " * " CYAN "Agarwal Janmansh " YELLOW "191CS205" << endl;
     cout << WHITE " * " CYAN "Aditya rudra     " YELLOW "191CS201" << endl;
     cout << WHITE " * " CYAN "Addhyan Malhotra " YELLOW "191CS202" << endl;
     cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
@@ -59,6 +59,7 @@ int print_main_menu(){
     cout << CYAN;
     cout << " 1. Page Replacement Alhorithms"<<endl;
     cout << " 2. Deadlock Algorithms"<<endl;
+    cout << " 3. Process Scheduling" << endl;
     cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
     long int j=1 <<16;
     for (size_t i = 0; i < 48; i++)

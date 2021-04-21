@@ -1,3 +1,11 @@
+/**
+ * @author: Janmansh Agarwal 
+ * @course: Operating Systems Lab.
+ * @course_id: CS255
+ * @roll:   191CS205
+ *   
+ * */
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -117,7 +125,3 @@ void Round_Robin(){
 	return;
 }
 
-int main(){
-	Round_Robin();
-	return 0;
-}
