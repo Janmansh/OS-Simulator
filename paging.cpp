@@ -43,7 +43,7 @@ void lru(int num_frames){
         frames[i]=nullptr;
     
     //  Print user menu.
-    cout << UN "\nYou Have Selected LRU Replacement Scheme" RESET<< endl;
+    cout << "\n" UN YELLOW "You Have Selected LRU Replacement Scheme" RESET<< endl;
     cout << "\n 1. Request Page"<<endl;
     cout << " 2. Stop Adding page\n"<<endl;
     cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
@@ -160,7 +160,7 @@ void mru(int num_frames){
         frames[i]=nullptr;
     
     //  Print user menu.
-    cout << UN "\nYou Have Selected LRU Replacement Scheme" RESET<< endl;
+    cout << "\n" UN YELLOW "You Have Selected LRU Replacement Scheme" RESET<< endl;
     cout << "\n 1. Request Page"<<endl;
     cout << " 2. Stop Adding page\n"<<endl;
     cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
@@ -274,7 +274,7 @@ void fifo(int num_frames){
         frames[i]=nullptr;
     
     //  Print user menu.
-    cout << UN "\nYou Have Selected FIFO Replacement Scheme" RESET<< endl;
+    cout << "\n" UN YELLOW "You Have Selected FIFO Replacement Scheme" RESET<< endl;
     cout << "\n 1. Request Page"<<endl;
     cout << " 2. Stop Adding page\n"<<endl;
     cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
@@ -363,7 +363,7 @@ int paging () {
     cin >> num_frames;
 
     while(true){
-        cout << UN "\nChoose algorithm to simulate" RESET<<endl;
+        cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
         cout << "\n 1. First In First Out [fifo]"<<endl;
         cout << " 2. Least Recently Used [lru]\n"<<endl;
         cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;

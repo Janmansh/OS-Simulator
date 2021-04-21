@@ -29,6 +29,7 @@ int main_animation() {
     cout << WHITE " * COURSE NAME: Operating Systems Lab" << endl;
     cout << " * COURSE CODE: CS255" << endl;
     cout << " * COURSE INST: Dr. Shashidar S Koolagudi" << endl;
+    usleep(1<<16);
     cout << " \n" UN "Team Members" RESET << endl <<endl;
     cout << WHITE " * " CYAN "Addhyan Malhotra " YELLOW "191CS202" << endl;
     cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
@@ -42,13 +43,71 @@ int main_animation() {
     cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;
 
 
-    int j=100000;
+    long int j=1 <<16;
     for (size_t i = 0; i < 30; i++)
     {
         usleep(j); // move faster and faster,
-        j = (int)(j * 0.8); // so sleep less each time
+        j = (int)(j * 0.9); // so sleep less each time
         cout << endl;
     }
     
+    return 0;
+}
+
+int print_main_menu(){
+    cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
+    cout << CYAN;
+    cout << " 1. Page Replacement Alhorithms"<<endl;
+    cout << " 2. Deadlock Algorithms"<<endl;
+    cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
+    long int j=1 <<16;
+    for (size_t i = 0; i < 48; i++)
+    {
+        usleep(j); // move faster and faster,
+        j = (int)(j * 0.9); // so sleep less each time
+        cout << endl;
+    }
+    cout << YELLOW "Enter your choice : ";
+    return 0;
+}
+int paging_animation(){
+    cout << "\n" <<endl;
+    cout << "██████╗  █████╗  ██████╗ ███████╗    ██████╗ ███████╗██████╗ ██╗      █████╗  ██████╗███████╗███╗   ███╗███████╗███╗   ██╗████████╗" << endl;
+    cout << "██╔══██╗██╔══██╗██╔════╝ ██╔════╝    ██╔══██╗██╔════╝██╔══██╗██║     ██╔══██╗██╔════╝██╔════╝████╗ ████║██╔════╝████╗  ██║╚══██╔══╝" << endl;
+    cout << "██████╔╝███████║██║  ███╗█████╗      ██████╔╝█████╗  ██████╔╝██║     ███████║██║     █████╗  ██╔████╔██║█████╗  ██╔██╗ ██║   ██║ "   << endl;
+    cout << "██╔═══╝ ██╔══██║██║   ██║██╔══╝      ██╔══██╗██╔══╝  ██╔═══╝ ██║     ██╔══██║██║     ██╔══╝  ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║ "  << endl;
+    cout << "██║     ██║  ██║╚██████╔╝███████╗    ██║  ██║███████╗██║     ███████╗██║  ██║╚██████╗███████╗██║ ╚═╝ ██║███████╗██║ ╚████║   ██║ " << endl;
+    cout << "╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝    ╚═╝  ╚═╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝╚══════╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝ " <<endl;
+    long int j=1 <<16;
+    for (size_t i = 0; i < 38; i++)
+    {
+        usleep(j); // move faster and faster,
+        j = (int)(j * 0.9); // so sleep less each time
+        cout << endl;
+    }
+    return 0;
+}
+
+int dead_safe_animation(){
+    cout << "██████╗ ███████╗ █████╗ ██████╗     ██╗      ██████╗  ██████╗██╗  ██╗     █████╗ ███╗   ██╗██████╗ \n";
+    cout << "██╔══██╗██╔════╝██╔══██╗██╔══██╗    ██║     ██╔═══██╗██╔════╝██║ ██╔╝    ██╔══██╗████╗  ██║██╔══██╗\n";
+    cout << "██║  ██║█████╗  ███████║██║  ██║    ██║     ██║   ██║██║     █████╔╝     ███████║██╔██╗ ██║██║  ██║\n";
+    cout << "██║  ██║██╔══╝  ██╔══██║██║  ██║    ██║     ██║   ██║██║     ██╔═██╗     ██╔══██║██║╚██╗██║██║  ██║\n";
+    cout << "██████╔╝███████╗██║  ██║██████╔╝    ███████╗╚██████╔╝╚██████╗██║  ██╗    ██║  ██║██║ ╚████║██████╔╝\n";
+    cout << "╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝     ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ \n";
+    cout <<endl;                                                                                                       
+    cout << "███████╗ █████╗ ███████╗███████╗████████╗██╗   ██╗     █████╗ ██╗      ██████╗  ██████╗ ███████╗\n";
+    cout << "██╔════╝██╔══██╗██╔════╝██╔════╝╚══██╔══╝╚██╗ ██╔╝    ██╔══██╗██║     ██╔════╝ ██╔═══██╗██╔════╝\n";
+    cout << "███████╗███████║█████╗  █████╗     ██║    ╚████╔╝     ███████║██║     ██║  ███╗██║   ██║███████╗\n";
+    cout << "╚════██║██╔══██║██╔══╝  ██╔══╝     ██║     ╚██╔╝      ██╔══██║██║     ██║   ██║██║   ██║╚════██║\n";
+    cout << "███████║██║  ██║██║     ███████╗   ██║      ██║       ██║  ██║███████╗╚██████╔╝╚██████╔╝███████║██╗\n";
+    cout << "╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝   ╚═╝      ╚═╝       ╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝\n";
+    long int j=1 <<16;
+    for (size_t i = 0; i < 37; i++)
+    {
+        usleep(j); // move faster and faster,
+        j = (int)(j * 0.9); // so sleep less each time
+        cout << endl;
+    }
     return 0;
 }

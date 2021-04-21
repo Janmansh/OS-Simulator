@@ -1,6 +1,6 @@
 /* Bankers problem*/
 #include<stdio.h>
-int bakers()
+int bankers()
 {
 
     int m,n,i,j,flag=0,count=0; /* m for no. of process and n for no. of resources */
