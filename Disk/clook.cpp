@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void disk_look()
+void disk_clook()
 {
 	int n, track;
 	cout<<"\nEnter Number Of Requests : ";
@@ -26,22 +26,22 @@ void disk_look()
 	}
 	
 	cout<<"\nHead Movement\n";
-	for(int i = pos-1; i >= 0; i--) // head to left
+	for(int i = pos-1; i >= 0; i--) // left
 	{
 		cout<<req[i+1]<<"->"<<req[i]<<" : "<<abs(req[i+1]-req[i])<<"\n";
 		seek += abs(req[i+1] - req[i]);
 	}
 	
-	if(pos != n) // go to right
+	if(pos != n) // go to right end
 	{
-		cout<<req[0]<<"->"<<req[pos+1]<<" : "<<abs(req[pos+1]-req[0])<<"\n";
-		seek += abs(req[pos+1] - req[0]);
+		cout<<req[0]<<"--->"<<req[n]<<" : "<<abs(req[n]-req[0])<<"\n";
+		seek += abs(req[n] - req[0]);
 	}
 	
-	for(int i = pos+2; i <= n; i++) // right to left
+	for(int i = n; i > pos + 1; i--) // right to left
 	{
-		cout<<req[i-1]<<"->"<<req[i]<<" : "<<abs(req[i-1]-req[i])<<"\n";
-		seek += abs(req[i-1] - req[i]);
+		cout<<req[i]<<"->"<<req[i-1]<<" : "<<abs(req[i]-req[i-1])<<"\n";
+		seek += abs(req[i] - req[i-1]);
 	}
 		
 	cout<<"\nTotal Head Movement : "<<seek;
@@ -49,5 +49,5 @@ void disk_look()
 
 /*int main()
 {
-	disk_look();
+	disk_clook();
 }*/
