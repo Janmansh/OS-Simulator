@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include "animations.cpp"
-#include "paging.cpp"
-#include "bankers.c"
+#include "Paging/paging.cpp"
+#include "Deadlock/banker_resource.cpp"
 #include "Process_Scheduling/FCFS.cpp"
 #include "Process_Scheduling/SJF.cpp"
 #include "Process_Scheduling/Round_Robin.cpp"
@@ -28,7 +28,7 @@ int main(){
 				break;
 			case 2:
 				dead_safe_animation();
-				bankers();
+				banker_resource();
 				break;
 			case 3:
 				int algo;
