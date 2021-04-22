@@ -1,42 +1,25 @@
 #include <iostream>
 
-#define maxN 1000
 using namespace std;
 
-struct partition {
+struct bmft_partition {
 	int size;
 	bool allocated;
 	int pid;
 };
 
-struct process {
+struct bmft_process {
 	int size;
 	int part_no;
 	int exist;
 };
 
-struct partition part[maxN];
-struct process proc[maxN];
-
-void print_table(int num)
-{
-	cout<<"\n\t\tMemory Table\n";
-
-	for(int i = 0; i < num; i++)
-	{
-		if(!part[i].allocated)
-		continue;
-		
-		cout<<part[i].size<<" | ";
-		if(part[i].pid == -1)
-			cout<<"Empty\n";
-		else
-			cout<<"Process "<<part[i].pid<<" Size "<<proc[part[i].pid].size<<"\n";
-	}
-}
 
 void best_fit_mft()
 {
+	struct bmft_partition bmft_part[1000];
+	struct bmft_process bmft_proc[1000];
+
 	int tot_mem, n_part, backup;
 	cout<<"Enter size of total memory : ";
 	cin>>tot_mem;
@@ -49,17 +32,17 @@ void best_fit_mft()
 	for(int i = 0; i < n_part; i++)
 	{
 		cout<<"Enter size of Partition "<<i<<" : ";
-		cin>>part[i].size;
-		part[i].allocated = false;
-		part[i].pid = -1;
-		if(backup >= part[i].size) // check if free memory is available
+		cin>>bmft_part[i].size;
+		bmft_part[i].allocated = false;
+		bmft_part[i].pid = -1;
+		if(backup >= bmft_part[i].size) // check if free memory is available
 		{
 			valid_parts++;
-			backup -= part[i].size;
-			part[i].allocated = true;
+			backup -= bmft_part[i].size;
+			bmft_part[i].allocated = true;
 			printf("Partition Allocated\n");
-			if(high < part[i].size)
-				high = part[i].size;
+			if(high < bmft_part[i].size)
+				high = bmft_part[i].size;
 		}
 		else
 			printf("Partition %d cannot be allocated memory since only %d memory is remaining\n", i+1, backup);
@@ -88,9 +71,9 @@ void best_fit_mft()
 				cout<<"No partition is large enough to accomodate this size\n";
 				continue;
 			}
-			else if(proc[id].exist == 1)
+			else if(bmft_proc[id].exist == 1)
 			{
-				cout<<"Process already exists in partition "<<proc[id].part_no<<"\n";
+				cout<<"Process already exists in partition "<<bmft_proc[id].part_no<<"\n";
 				continue;
 			}
 			else if(sz > tot_mem - used)
@@ -102,32 +85,32 @@ void best_fit_mft()
 			int small = 1e4, pos = -1;
 			for(int i = 0; i < n_part; i++)
 			{
-				if(part[i].allocated && part[i].pid == -1 && sz <= part[i].size && part[i].size < small)
+				if(bmft_part[i].allocated && bmft_part[i].pid == -1 && sz <= bmft_part[i].size && bmft_part[i].size < small)
 				{
-					small = part[i].size;
+					small = bmft_part[i].size;
 					pos = i;
 				}	
 			}
 			
 			if(pos != -1)
 			{
-				part[pos].pid = id;
-				proc[id].part_no = pos;
-				proc[id].size = sz;
-				proc[id].exist = 1;
+				bmft_part[pos].pid = id;
+				bmft_proc[id].part_no = pos;
+				bmft_proc[id].size = sz;
+				bmft_proc[id].exist = 1;
 				cout<<id<<" is accomadated in partition "<<pos<<"\n";
-				used += proc[id].size;
+				used += bmft_proc[id].size;
 			}
 			
-			if(proc[id].exist == 0)
+			if(bmft_proc[id].exist == 0)
 			{
 				bool find = false;
 				for(int i = 0; i < n_part; i++)
 				{
-					int temp = part[i].pid;
+					int temp = bmft_part[i].pid;
 					if(temp != -1)
 					{
-						if(part[i].size - proc[temp].size >= sz)
+						if(bmft_part[i].size - bmft_proc[temp].size >= sz)
 						find = true;
 					}
 				}
@@ -143,20 +126,31 @@ void best_fit_mft()
 			cout<<"Enter Process ID : ";
 			cin>>id;
 			
-			int part_id = proc[id].part_no;
-			part[part_id].pid = -1;
-			used -= proc[id].size;
-			proc[id].exist =  0;
-			proc[id].part_no = -1;
-			proc[id].size = 0;
+			int part_id = bmft_proc[id].part_no;
+			bmft_part[part_id].pid = -1;
+			used -= bmft_proc[id].size;
+			bmft_proc[id].exist =  0;
+			bmft_proc[id].part_no = -1;
+			bmft_proc[id].size = 0;
 			cout<<"Process "<<id<<" Removed from partition "<<part_id<<"\n";
 		}
 		else
 			break;
 		
-		print_table(n_part);
+	
+		cout<<"\n\t\tMemory Table\n";
+		for(int i = 0; i < n_part; i++)
+		{
+			if(!bmft_part[i].allocated)
+			continue;
+			
+			cout<<bmft_part[i].size<<" | ";
+			if(bmft_part[i].pid == -1)
+				cout<<"Empty\n";
+			else
+				cout<<"Process "<<bmft_part[i].pid<<" Size "<<bmft_proc[bmft_part[i].pid].size<<"\n";
+		}
 	}
-	print_table(n_part);
 	cout<<"Total Unused Space : "<<tot_mem - used;
 	return;
 }
