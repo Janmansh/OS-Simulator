@@ -12,6 +12,10 @@
 #include "Process_Scheduling/Round_Robin.cpp"
 #include "Process_Scheduling/Priority_preemptive.cpp"
 #include "Process_Scheduling/HRRN.cpp"
+#include "Process_Scheduling/LJF.cpp"
+#include "Process_Scheduling/LRTF.cpp"
+#include "Process_Scheduling/SRTF.cpp"
+#include "Process_Scheduling/Priority_non_preemptive.cpp"
 
 #include "Disk/clook.cpp"
 #include "Disk/look.cpp"
@@ -55,18 +59,25 @@ int main()
 			process_sched_animation();
 			cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl
 				 << endl;
-			cout << "\n 1. First Come First Serve [fcfs]" << endl;
-			cout << " 2. Shortest Job First [sjf]" << endl;
-			cout << " 3. Round Robin [rrb]" << endl;
-			cout << " 4. Priority Preemptive [pri_p]\n"
+			cout << "\n 1. First Come First Serve [FCFS]" << endl;
+			cout << " 2. Shortest Job First [SJF]" << endl;
+			cout << " 3. Round Robin [RR]" << endl;
+			cout << " 4. Longest Job First [LJF]" << endl;
+			cout << " 5. Shortest Remaining Time First [SRTF]" << endl;
+			cout << " 6. Longest Remaining Time First [LRTF]" << endl;
+			cout << " 7. Highest Response Ratio Next [HRRN]" << endl;
+			cout << " 8. Priority Non-preemptive [Pri_non]" << endl;
+			cout << " 9. Priority Preemptive [Pri_p]\n"
 				 << endl;
-			cout << " 9. TO EXIT**\n"
+			cout << " 0. TO EXIT**\n"
 				 << endl;
 			cout << YELLOW "Your choice : ";
 			cin >> algo;
 			cout << RESET;
 			switch (algo)
 			{
+			case 0:
+				break;
 			case 1:
 				FCFS();
 				break;
@@ -77,7 +88,25 @@ int main()
 				Round_Robin();
 				break;
 			case 4:
+				LJF();
+				break;
+			case 5:
+				SRTF();
+				break;
+			case 6:
+				LRTF();
+				break;
+			case 7:
+				HRRN();
+				break;
+			case 8:
+				Priority_non_preemptive();
+				break;
+			case 9:
 				Priority_preemptive();
+				break;
+			default:
+				cout << "Wrong input\n";
 				break;
 			}
 			cout << YELLOW "\n\nPress Any Key to continue : " RESET;

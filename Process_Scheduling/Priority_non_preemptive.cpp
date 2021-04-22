@@ -3,14 +3,14 @@
 
 using namespace std;
 
-class Process //class for processes
+class Process_P //class for processes
 {
 public:
     int a_t, b_t, w_t, ta_t, p_no, c_t, priority, rem_t;
     bool isdone = false;
 };
 
-bool Priority_non_preemptive_sort_process(Process p1, Process p2) //sort process acc. to arrival time
+bool Priority_non_preemptive_sort_process(Process_P p1, Process_P p2) //sort process acc. to arrival time
 {
     return (p1.a_t < p2.a_t);
 }
@@ -25,7 +25,7 @@ void Priority_non_preemptive()
         cout << "Invalid input, try again\nEnter the number of processes: ";
         cin >> n;
     }
-    Process p[n];
+    Process_P p[n];
     for (i = 0; i < n; i++) //Taking input Arrival times, Burst times and priority for every process
     {
         p[i].p_no = i + 1;
@@ -87,8 +87,3 @@ void Priority_non_preemptive()
     cout << "\nAverage Turn Around Time = " << sum_tat / n << "\nAverage Waiting Time = " << sum_wt / n; //Print Average Turn around time and Waiting time
 }
 
-int main()
-{
-    Priority_non_preemptive();
-    return 0;
-}

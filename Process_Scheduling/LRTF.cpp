@@ -3,14 +3,14 @@
 
 using namespace std;
 
-class Process //class for processes
+class Process_LRTF //class for processes
 {
 public:
     int a_t, b_t, w_t, ta_t, rem_t, p_no, c_t, priority;
     bool isdone = false;
 };
 
-bool LRTF_sort_process(Process p1, Process p2) //sort process acc. to arrival time
+bool LRTF_sort_process(Process_LRTF p1, Process_LRTF p2) //sort process acc. to arrival time
 {
     return (p1.a_t < p2.a_t);
 }
@@ -25,7 +25,7 @@ void LRTF()
         cout << "Invalid input, try again\nEnter the number of processes: ";
         cin >> n;
     }
-    Process p[n];
+    Process_LRTF p[n];
     for (i = 0; i < n; i++) //Taking input Arrival times and Burst times for every process
     {
         p[i].p_no = i + 1;
@@ -80,8 +80,4 @@ void LRTF()
     cout << "\nAverage Turn Around Time = " << sum_tat / n << "\nAverage Waiting Time = " << sum_wt / n; //Print Average Turn around time and Waiting time
 }
 
-int main()
-{
-    LRTF();
-    return 0;
-}
+

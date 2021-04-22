@@ -80,8 +80,3 @@ void SRTF()
     cout << "\nAverage Turn Around Time = " << sum_tat / n << "\nAverage Waiting Time = " << sum_wt / n; //Print Average Turn around time and Waiting time
 }
 
-int main()
-{
-    SRTF();
-    return 0;
-}
