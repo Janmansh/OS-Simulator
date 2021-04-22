@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int banker_resource()
+void banker_resource()
 {
 	int process, resource;
 	printf("Enter number of processes : ");
@@ -39,12 +39,21 @@ int banker_resource()
 			if(table_max[i][j] > total[j])
 			{
 				printf("Not enough resources for process %d", i);
-				return 0;
+				return;
 			}
 				
 			table_need[i][j] = table_max[i][j] - table_alloc[i][j];
 			if(table_need[i][j] < 0)
 				table_need[i][j] = 0;
+		}
+	}
+	
+	for(int i = 0; i < resource; i++)
+	{
+		if(available[i] < 0)
+		{
+			printf("\nInvalid Configuration, More resources allocated than available\n");
+			return;
 		}
 	}
 
@@ -89,5 +98,7 @@ int banker_resource()
 	
 	if(ans == true)	
 	printf("All proccesses are done this was a safe execution sequence\n");
-	return 0;
+	return;
 }
+
+
