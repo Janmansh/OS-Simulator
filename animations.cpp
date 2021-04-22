@@ -32,15 +32,15 @@ int main_animation() {
     usleep(1<<16);
     cout << " \n" UN "Team Members" RESET << endl <<endl;
     cout << WHITE " * " CYAN "Addhyan Malhotra " YELLOW "191CS202" << endl;
-    cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
     cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;
-    cout << WHITE " * " CYAN "Anupam Lal       " YELLOW "191CS209" << endl;
+    cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
+    cout << WHITE " * " CYAN "Aditya Rudra     " YELLOW "191CS204" << endl;
     cout << WHITE " * " CYAN "Agarwal Janmansh " YELLOW "191CS205" << endl;
-    cout << WHITE " * " CYAN "Aditya rudra     " YELLOW "191CS201" << endl;
-    cout << WHITE " * " CYAN "Addhyan Malhotra " YELLOW "191CS202" << endl;
-    cout << WHITE " * " CYAN "Adithya Rajesh   " YELLOW "191CS203" << endl;
-    cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;
-    cout << WHITE " * " CYAN "Abhinav Gupta    " YELLOW "191CS201" << endl;
+    cout << WHITE " * " CYAN "Akash Meena      " YELLOW "191CS206" << endl;
+    cout << WHITE " * " CYAN "Alan Tony        " YELLOW "191CS207" << endl;
+    cout << WHITE " * " CYAN "Aniket Srivastava" YELLOW "191CS208" << endl;
+    cout << WHITE " * " CYAN "Anupam Lal       " YELLOW "191CS209" << endl;
+    cout << WHITE " * " CYAN "Arnab Das        " YELLOW "191CS210" << endl;
 
 
     long int j=1 <<16;
