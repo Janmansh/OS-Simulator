@@ -40,7 +40,3 @@ void disk_sstf()
 	cout<<"\nTotal Head Movement : "<<seek;
 }
 
-int main()
-{
-	disk_sstf();
-}

@@ -359,7 +359,9 @@ int paging () {
     while(true){
         cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
         cout << "\n 1. First In First Out [fifo]"<<endl;
-        cout << " 2. Least Recently Used [lru]\n"<<endl;
+        cout << " 2. Least Recently Used [lru]"<<endl;
+        cout << " 3. Most Recently Used  [mru]\n"<<endl;
+
         cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
         cout << "Your choice : ";
         cin >> algo;
@@ -371,6 +373,8 @@ int paging () {
             case 2:
                 lru(num_frames);
                 break;
+            case 3:
+                mru(num_frames);
 
             default:
                 cout << "Exiting...\n";

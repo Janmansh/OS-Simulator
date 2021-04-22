@@ -11,31 +11,32 @@ using namespace std;
 
 void FCFS() {
     
-	cout << "Enter the number of processes: ";
+	cout << "\nEnter the number of processes: ";
 	int n,i;
 	cin >> n;
 	while(n<0){
-		cout<<"Wrong input, try again\nEnter number of processes: ";
+		cout<<RED "Wrong input, try again" WHITE "\nEnter number of processes: ";
 		cin>>n;
 	}
 	vector<tuple<int, int, int, int, int>>times(n); // {at, bt, ct, tat, wt}
 	
-	cout << "Enter the Arrival time and Burst time respectively of "<<n<<" programs:\n";
+	cout << UN "Process Details" RESET << endl <<endl;
 	for(i=0;i<n;i++){
 	    int t;
-		cout << "Arrival Time: ";
+		cout << "Arrival Time P"<<i<<": ";
 	    cin>>t;
 		while(t<0){
-			cout<<"Wrong input, try again\nArrival time: ";
+			cout<<"Wrong input, try again\nArrival Time P"<<i<<": ";
 			cin>>t;
 		}
 	    get<0>(times[i])=t;  // Arrival time
-	    cout << "Burst Time: ";
+		cout << "Burst Time   P"<<i<<": ";
 	    cin>>t;
 		while(t<0){
-			cout<<"Wrong input, try again\nBurst time: ";
+			cout<<"Wrong input, try again\nBurst Time   P"<<i<<": ";
 			cin>>t;
 		}
+		cout << endl;
 	    get<1>(times[i])=t;  // Burst time
 	    get<2>(times[i])=0;  // Completion time
 	    get<3>(times[i])=0;  // Turn around time
@@ -64,7 +65,7 @@ void FCFS() {
 	    TWT += get<4>(times[i]);
 	}
 
-	cout << "\nProcess No.\tArrival Time\tBurst Time\tCompletion Time\t\tTurn-around Time\tWaiting Time\n";
+	cout << "\n" MAGENTA "Process No.\tArrival Time\tBurst Time\tCompletion Time\t\tTurn-around Time\tWaiting Time\n" WHITE;
 	for(i=0;i<n;i++){
 		cout << i+1 << "\t\t" << get<0>(times[i]) << "\t\t" << get<1>(times[i]) << "\t\t" << get<2>(times[i]) << "\t\t\t" << get<3>(times[i]) << "\t\t\t" << get<4>(times[i]) << "\n";
 	}
@@ -72,8 +73,8 @@ void FCFS() {
 	TAT = TAT/(1.0*n);    // Average TAT
 	TWT = TWT/(1.0*n);    // Average WT
 	
-	cout << "\nAverage Turn around time is: " << TAT <<"\n";
-	cout << "Average Waiting time is: " << TWT <<"\n";
+	cout << GREEN "\nAverage Turn around time is: " << TAT <<"\n";
+	cout <<         "Average Waiting time is    : " << TWT <<"\n" RESET;
 	
 	return;
 }

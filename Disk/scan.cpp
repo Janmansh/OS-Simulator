@@ -55,8 +55,3 @@ void disk_scan()
 		
 	cout<<"\nTotal Head Movement : "<<seek;
 }
-
-int main()
-{
-	disk_scan();
-}

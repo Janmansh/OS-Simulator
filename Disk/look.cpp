@@ -7,12 +7,12 @@ void disk_look()
 	int n, track;
 	cout<<"\nEnter Number Of Requests : ";
 	cin>>n;
-	cout<<"\nEnter Number Of Tracks : ";
+	cout<<"\nEnter Number Of Tracks   : ";
 	cin>>track;
 	int req[n+1];
 	cout<<"\nEnter Current Postions of R/W Head : ";
 	cin>>req[0];
-	cout<<"\nEnter the Requests\n";
+	cout<<"\n"UN"Enter the Requests"RESET"\n";
 	for(int i = 1; i <= n; i++)
 	cin>>req[i];
 	
@@ -45,9 +45,4 @@ void disk_look()
 	}
 		
 	cout<<"\nTotal Head Movement : "<<seek;
-}
-
-int main()
-{
-	disk_look();
 }

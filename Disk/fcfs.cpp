@@ -24,8 +24,3 @@ void disk_fcfs()
 	
 	cout<<"\nTotal Head Movement : "<<seek;
 }
-
-int main()
-{
-	disk_fcfs();
-}
