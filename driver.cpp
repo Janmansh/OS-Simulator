@@ -6,6 +6,7 @@
 #include "Process_Scheduling/SJF.cpp"
 #include "Process_Scheduling/Round_Robin.cpp"
 #include "Process_Scheduling/Priority_preemptive.cpp"
+#include "Process_Scheduling/HRRN.cpp"
 
 int main(){
 	int choice;
@@ -31,7 +32,7 @@ int main(){
 				break;
 			case 3:
 				int algo;
-				cout << "Enter 1 for FCFS\nEnter 2 for SJF\nEnter 3 for Round Robin\nEnter 4 for Priority Preemptive\n";
+				cout << "Enter 1 for FCFS\nEnter 2 for SJF\nEnter 3 for Round Robin\nEnter 4 for Priority Preemptive\nEnter 5 for HRRN\n";
 				cin >> algo;
 				switch(algo){
 					case 1:
@@ -46,9 +47,13 @@ int main(){
 					case 4:
 						Priority_preemptive();
 						break;
+					case 5:
+						HRRN();
+						break;
 					default:
 						cout << "Wrong input\n" << endl;
 				}
+				break;
 			default:
 				cout << "Wrong input" <<endl;
 		}
