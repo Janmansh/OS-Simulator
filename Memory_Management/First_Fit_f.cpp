@@ -11,7 +11,7 @@
 #define debug(x) cout << #x << " = " << x << "\n"
 
 using namespace std;
-
+ 
 // Struct to hold block
 struct Block1{
     int size;

@@ -26,7 +26,7 @@ void disk_scan()
 	}
 	
 	cout<<"\nHead Movement\n";
-	for(int i = pos-1; i >= 0; i--)
+	for(int i = pos-1; i >= 0; i--) // head to left
 	{
 		cout<<req[i+1]<<"->"<<req[i]<<" : "<<abs(req[i+1]-req[i])<<"\n";
 		seek += abs(req[i+1] - req[i]);
@@ -37,21 +37,27 @@ void disk_scan()
 		seek += abs(req[0] - 0);
 	}
 	
-	if(pos != n)
+	if(pos != n) // right of initial head
 	{
 		cout<<0<<"->"<<req[pos+1]<<" : "<<abs(req[pos+1]-0)<<"\n";
 		seek += abs(req[pos+1] - 0);
 	}
-	for(int i = pos+2; i <= n; i++)
+	for(int i = pos+2; i <= n; i++) // from head to right
 	{
 		cout<<req[i-1]<<"->"<<req[i]<<" : "<<abs(req[i-1]-req[i])<<"\n";
 		seek += abs(req[i-1] - req[i]);
 	}
 	if(req[n] != track-1)
 	{
-		cout<<req[n]<<"->"<<track<<" : "<<abs(req[n]-track)<<"\n";
-		seek += abs(req[n] - track);
+		cout<<req[n]<<"->"<<track-1<<" : "<<abs(req[n]-track+1)<<"\n";
+		seek += abs(req[n] - track + 1);
 	}
 		
 	cout<<"\nTotal Head Movement : "<<seek;
 }
+
+/*int main()
+{
+	disk_scan();
+}*/
+
