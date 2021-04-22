@@ -40,7 +40,7 @@ int main()
 		print_main_menu();
 
 		//user choice
-		cin >> choice;
+		scanf("%d", &choice);
 		switch (choice)
 		{
 		case 1:
@@ -72,7 +72,7 @@ int main()
 			cout << " 0. TO EXIT**\n"
 				 << endl;
 			cout << YELLOW "Your choice : ";
-			cin >> algo;
+			scanf("%d", &algo);
 			cout << RESET;
 			switch (algo)
 			{
@@ -126,7 +126,7 @@ int main()
 			cout << " 9. TO EXIT**\n"
 				 << endl;
 			cout << YELLOW "Your choice : ";
-			cin >> algo;
+			scanf("%d", &algo);
 			cout << RESET;
 			switch (algo)
 			{
@@ -164,7 +164,7 @@ int main()
 			cout << " 9. TO EXIT**\n"
 				 << endl;
 			cout << YELLOW "Your choice : ";
-			cin >> algo;
+			scanf("%d", &algo);
 			cout << RESET;
 			switch (algo)
 			{
@@ -199,7 +199,7 @@ int main()
 			cout << " 9. TO EXIT**\n"
 				 << endl;
 			cout << YELLOW "Your choice : ";
-			cin >> algo;
+			scanf("%d", &algo);
 			cout << RESET;
 			switch (algo)
 			{
