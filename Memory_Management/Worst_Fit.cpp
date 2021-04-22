@@ -7,25 +7,25 @@ struct process{
     int tot_size;
     int starting;
     int end;
-}p[100];
+}p1[100];
 
 vector <pair<int,int>> empty_slots;
 
 void insert()
 {
     int i=0;
-    while(p[i].id!=-1)
+    while(p1[i].id!=-1)
     i++;
     cout<<"Enter process id ";
-    cin>>p[i].id;
+    cin>>p1[i].id;
     cout<<"Enter process size ";
-    cin>>p[i].tot_size;
+    cin>>p1[i].tot_size;
     int min_starting=5000;
     int worst_size=-1;
     int total_empty=0;
     for(auto a=empty_slots.begin();a!=empty_slots.end();a++)
     {
-        if(p[i].tot_size<=(a->second)-(a->first))
+        if(p1[i].tot_size<=(a->second)-(a->first))
         {
             if(worst_size<(a->second)-(a->first))
             {
@@ -42,31 +42,31 @@ void insert()
     }
     if(min_starting==5000)
     {
-        if(total_empty>=p[i].tot_size)
+        if(total_empty>=p1[i].tot_size)
         {
             cout<< RED "Process cannot be accomodated due to external fragementation" RESET<<endl;
         }
         else 
     		cout<< RED "Process too large. Not enough space in memory" RESET<<endl;
-        p[i].id=-1;
-        p[i].tot_size=0;
-        p[i].starting=0;
-        p[i].end=0;
+        p1[i].id=-1;
+        p1[i].tot_size=0;
+        p1[i].starting=0;
+        p1[i].end=0;
     }
     else{
         for(auto a=empty_slots.begin();a!=empty_slots.end();a++)
         {
             if(a->first==min_starting)
             {
-                p[i].starting=min_starting;
-                p[i].end=min_starting+p[i].tot_size;
+                p1[i].starting=min_starting;
+                p1[i].end=min_starting+p1[i].tot_size;
                 int to_be_inserted=a->second;
                 empty_slots.erase(a);
-                if(p[i].end!=to_be_inserted)
+                if(p1[i].end!=to_be_inserted)
                 {
-                    empty_slots.push_back(make_pair(p[i].end,to_be_inserted));
+                    empty_slots.push_back(make_pair(p1[i].end,to_be_inserted));
                 }
-                cout<<GREEN "Process inserted successfully. START: "<<p[i].starting<<" END:"<<p[i].end<< RESET <<endl;
+                cout<<GREEN "Process inserted successfully. START: "<<p1[i].starting<<" END:"<<p1[i].end<< RESET <<endl;
                 break;
             }
         }
@@ -79,7 +79,7 @@ void del()
     cout<<"Enter process id to be deleted ";
     cin>>pid;
     int i=0;
-    while(p[i].id!=pid&&i<=100)
+    while(p1[i].id!=pid&&i<=100)
     i++;
     if(i==101)
     {
@@ -88,22 +88,22 @@ void del()
     }
     for(auto a=empty_slots.begin();a!=empty_slots.end();a++)
     {
-        if(a->first==p[i].end)
+        if(a->first==p1[i].end)
         {
-            p[i].end=a->second;
+            p1[i].end=a->second;
             empty_slots.erase(a);
             a--;
         }
-        if(a->second==p[i].starting)
+        if(a->second==p1[i].starting)
         {
-            p[i].starting=a->first;
+            p1[i].starting=a->first;
             empty_slots.erase(a);
             a--;
         }
-        p[i].id=-1;
-        p[i].tot_size=0;
+        p1[i].id=-1;
+        p1[i].tot_size=0;
     }
-    empty_slots.push_back(make_pair(p[i].starting,p[i].end));
+    empty_slots.push_back(make_pair(p1[i].starting,p1[i].end));
     cout<<GREEN "Process removed successfully" RESET <<endl;
 }
 
@@ -116,9 +116,9 @@ void display()
     for(int i=0;i<100;i++)
     {	
 	// Find active processes
-        if(p[i].id!=-1)
+        if(p1[i].id!=-1)
         {
-            cout<<YELLOW "Process "<<p[i].id<<" START: "<<p[i].starting<<" END: "<<p[i].end<< RESET <<endl;
+            cout<<YELLOW "Process "<<p1[i].id<<" START: "<<p1[i].starting<<" END: "<<p1[i].end<< RESET <<endl;
             count++;
         }
     }

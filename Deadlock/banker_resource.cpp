@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void banker_resource()
+int banker_resource()
 {
 	int process, resource;
 	printf("Enter number of processes : ");
@@ -89,5 +89,5 @@ void banker_resource()
 	
 	if(ans == true)	
 	printf("All proccesses are done this was a safe execution sequence\n");
-
+	return 0;
 }
