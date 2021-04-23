@@ -17,8 +17,18 @@ struct bmft_process {
 
 void best_fit_mft()
 {
-	struct bmft_partition bmft_part[1000];
-	struct bmft_process bmft_proc[1000];
+	struct bmft_partition bmft_part[100];
+	struct bmft_process bmft_proc[100];
+
+	for(int i = 0; i < 100; i++)
+	{
+		bmft_proc[i].exist = 0;
+		bmft_proc[i].part_no = -1;
+		bmft_proc[i].size = 0;
+		bmft_part[i].pid = -1;
+		bmft_part[i].size = 0;
+		bmft_part[i].allocated = false;
+	}
 
 	int tot_mem, n_part, backup;
 	cout<<"Enter size of total memory : ";
@@ -127,6 +137,11 @@ void best_fit_mft()
 			cin>>id;
 			
 			int part_id = bmft_proc[id].part_no;
+			if(part_id == -1)
+			{
+				cout<<"Process does not exist\n";
+				continue;
+			}
 			bmft_part[part_id].pid = -1;
 			used -= bmft_proc[id].size;
 			bmft_proc[id].exist =  0;
@@ -138,20 +153,31 @@ void best_fit_mft()
 			break;
 		
 	
-		cout<<"\n\t\tMemory Table\n";
+		cout<<GREEN<<"\n\t\tMemory Table\n"<<WHITE;
 		for(int i = 0; i < n_part; i++)
 		{
 			if(!bmft_part[i].allocated)
 			continue;
 			
-			cout<<bmft_part[i].size<<" | ";
+			cout<<CYAN<<bmft_part[i].size<<" | ";
 			if(bmft_part[i].pid == -1)
-				cout<<"Empty\n";
+				cout<<"Empty\n"<<WHITE;
 			else
-				cout<<"Process "<<bmft_part[i].pid<<" Size "<<bmft_proc[bmft_part[i].pid].size<<"\n";
+				cout<<"Process "<<bmft_part[i].pid<<" Size "<<bmft_proc[bmft_part[i].pid].size<<"\n"<<WHITE;
 		}
 	}
-	cout<<"Total Unused Space : "<<tot_mem - used;
+	cout<<"\nTotal Unused Space : "<<tot_mem - used;
+	
+	for(int i = 0; i < 100; i++)
+	{
+		bmft_proc[i].exist = 0;
+		bmft_proc[i].part_no = -1;
+		bmft_proc[i].size = 0;
+		bmft_part[i].pid = -1;
+		bmft_part[i].size = 0;
+		bmft_part[i].allocated = false;
+	}
+
 	return;
 }
 
