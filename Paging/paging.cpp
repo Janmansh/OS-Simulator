@@ -7,6 +7,7 @@
  * */
 #include <bits/stdc++.h>
 #include "optimal.cpp"
+#include "Address_space.cpp"
 
 using namespace std;
 
@@ -341,7 +342,19 @@ void fifo(int num_frames){
 
 // driver code
 int paging () {
-    
+
+    int alg;
+
+    cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
+    cout << "\n Enter 1. Address Translator"<<endl;
+    cout << " Enter Any key for Paging\n"<<endl;
+
+    cin >> alg;
+    if(alg == 1){
+        Address_space();
+        return 0;
+    }
+
     // declare some common var
     int algo, num_frames;
     
@@ -354,7 +367,8 @@ int paging () {
         cout << "\n 1. First In First Out [fifo]"<<endl;
         cout << " 2. Least Recently Used [lru]"<<endl;
         cout << " 3. Most Recently Used  [mru]"<<endl;
-        cout << " 4. Optimal  [opt]\n"<<endl;
+        cout << " 4. Optimal  [opt]"<<endl;
+        cout << " 5. Address Translator [AT] \n" << endl;
         cout << " 9. To Exit*\n"<<endl;
         cout << "Your choice : ";
         scanf("%d",&algo);
@@ -368,9 +382,13 @@ int paging () {
                 break;
             case 3:
                 mru(num_frames);
+                break;
             case 4:
                 optimal(num_frames);
-
+                break;
+            case 5:
+                Address_space();
+                break;
             default:
                 cout << "Exiting...\n";
                 return 0;

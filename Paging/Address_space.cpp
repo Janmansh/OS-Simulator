@@ -9,7 +9,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int main(){
+void Address_space(){
   
   int n,i,j,vm,pm,ps;
   cout << "Enter the size of virtual memory in KB: ";
@@ -46,6 +46,12 @@ int main(){
     cout << "Enter 1 to virtual address in the format 'page_no word_offset', Enter 2 to stop adding: ";
     cin >> k;
     
+    while(k!=1 && k!=2){
+      cout << "wrong input. Try again\n";
+      cout << "Enter 1 to virtual address in the format 'page_no word_offset', Enter 2 to stop adding: ";
+      cin >> k;
+    }
+
     if(k == 2){
       break;
     }
@@ -128,5 +134,5 @@ int main(){
     cout << "F" << i << " P" << a[i] << "\n";
   }
   
-  return 0;
+  return;
 }
