@@ -17,7 +17,6 @@
 #include "Process_Scheduling/Priority_non_preemptive.cpp"
 #include "Process_Synchronization/DiningPhilosophers.c"
 #include "Process_Synchronization/ReadersWriters.c"
-#include "Process_Synchronization/ProducersConsumers.c"
 #include "Process_Synchronization/SleepingBarber.c"
 #include "Process_Synchronization/pc.c"
 #include "Disk/clook.cpp"

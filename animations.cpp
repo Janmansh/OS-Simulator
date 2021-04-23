@@ -12,7 +12,7 @@
 #define BOLDBLACK   "\033[1m\033[30m"      /* Bold Black */
 #define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
 #define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
-#define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
+#define BOLDYELLOW  "\033[33m"      /* Bold Yellow */
 #define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
 #define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
@@ -56,7 +56,7 @@ int main_animation() {
 
 int print_main_menu(){
     cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
-    cout << BOLDWHITE;
+    cout << WHITE;
     cout << " 1. Page Replacement Alhorithms"<<endl;
     cout << " 2. Deadlock Algorithms"<<endl;
     cout << " 3. Process Scheduling" << endl;
@@ -132,7 +132,7 @@ int process_sched_animation(){
     cout << "██████╔╝╚█████╔╝██║░░██║███████╗██████╔╝╚██████╔╝███████╗██║██║░╚███║╚██████╔╝" << endl;
     cout << "╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░░╚═════╝░╚══════╝╚═╝╚═╝░░╚══╝░╚═════╝░" << endl;
     long int j=1 <<16;
-    for (size_t i = 0; i < 30; i++)
+    for (size_t i = 0; i < 25; i++)
     {
         usleep(j); // move faster and faster,
         j = (int)(j * 0.9); // so sleep less each time
