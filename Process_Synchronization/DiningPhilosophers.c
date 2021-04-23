@@ -42,7 +42,7 @@ void DP_pickUpChopsticks(DP_global *globals, int pno, int left, int right, int e
     printf("\nPhilosopher %d is hungry and is trying to get chopsticks", pno);
 
     while(globals->chopsticks[left] != 1 || globals->chopsticks[right] != 1){
-        printf("\nPhilosopher %d is waiting for chopsticks to be free", pno);
+        printf("\n%sPhilosopher %d is waiting for chopsticks to be free%s",YELLOW, pno, WHITE);
         pthread_cond_wait(&globals->phil[pno].available, &globals->mutex);
     }
     
@@ -51,7 +51,7 @@ void DP_pickUpChopsticks(DP_global *globals, int pno, int left, int right, int e
 
     //Starting to eat
     globals->phil[pno].state = EATING;
-    printf("\nPhilosopher %d has gotten the chopsticks and started to eat.", pno);   
+    printf("\n%sPhilosopher %d has gotten the chopsticks and started to eat.%s",CYAN, pno, WHITE);   
     
 }
 
@@ -95,7 +95,7 @@ void* DP_Philosopher(void *args){
     pthread_mutex_unlock(&globals->mutex);
 
     //Thinking state
-    printf("\nPhilosopher %d is thinking", pno);
+    printf("\n%sPhilosopher %d is thinking%s",CYAN, pno, WHITE);
     sleep(think_time);
 
     //Pick up chopsticks
@@ -121,13 +121,13 @@ void DP_createThreads(DP_global *globals){
     int *status;
 
     for(i=0; i<globals->n; i++){
-        printf("\nCreating thread  of philosopher %d", i);
+        printf("\n%sCreating thread  of philosopher %d %s", GREEN, i, WHITE);
         pthread_create(&globals->phil[i].threadID, NULL, &DP_Philosopher, (void*)globals);
     }
 
     for(i=0; i<globals->n; i++){
         pthread_join(globals->phil[i].threadID, (void**)&status);
-        printf("\nPhilosopher %d exited with status %d", i, *status);
+        printf("\n%sPhilosopher %d exited with status %d %s",GREEN, i, *status, WHITE);
     }
 
     //Destroying mutexes & condition variables after threads have terminated
