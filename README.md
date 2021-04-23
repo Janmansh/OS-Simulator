@@ -3,8 +3,8 @@
 <strong>Running instructions : </strong>
 Clone or download the repository. Compile using pthread and lrt libraries or run on terminal the following:
 
-g++ driver.cpp -lrt -lpthread <br>
-./a.out
+```g++ driver.cpp -lrt -lpthread ```<br>
+```./a.out```
 
 <br><br>
 
