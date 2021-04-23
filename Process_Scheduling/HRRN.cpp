@@ -100,7 +100,7 @@ void HRRN() {
 	    TWT += get<4>(times[i]);
 	}
 
-	cout << "\nProcess No.\tArrival Time\tBurst Time\tCompletion Time\t\tTurn-around Time\tWaiting Time\n";
+	cout << CYAN<<"\nProcess No.\tArrival Time\tBurst Time\tCompletion Time\t\tTurn-around Time\tWaiting Time\n"<<WHITE;
 	for(i=0;i<n;i++){
 		cout << i+1 << "\t\t" << get<0>(times[i]) << "\t\t" << get<1>(times[i]) << "\t\t" << get<2>(times[i]) << "\t\t\t" << get<3>(times[i]) << "\t\t\t" << get<4>(times[i]) << "\n";
 	}
@@ -108,8 +108,8 @@ void HRRN() {
 	TAT = TAT/(1.0*n);    // Average TAT
 	TWT = TWT/(1.0*n);    // Average WT
 	
-	cout << "\nAverage Turn around time is: " << TAT <<"\n";
-	cout << "Average Waiting time is: " << TWT <<"\n";
+	cout << GREEN<<"\nAverage Turn around time is: " << TAT <<"\n";
+	cout << "Average Waiting time is: " << TWT <<"\n"<<WHITE;
 	
 	return;
 }
