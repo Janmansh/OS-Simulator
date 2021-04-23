@@ -57,7 +57,7 @@ int main_animation() {
 int print_main_menu(){
     cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
     cout << WHITE;
-    cout << " 1. Page Replacement Alhorithms"<<endl;
+    cout << " 1. Page Replacement Algorithms"<<endl;
     cout << " 2. Deadlock Algorithms"<<endl;
     cout << " 3. Process Scheduling" << endl;
     cout << " 4. Memory Management" << endl;

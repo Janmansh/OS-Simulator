@@ -223,6 +223,8 @@ int main()
 			getchar();
 			getchar();
 			break;
+		case 9:
+			return 0;
 		default:
 			cout << "Wrong input" << endl;
 		}

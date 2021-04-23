@@ -29,7 +29,7 @@ void *barber(void *arg)
 
 	    numberOfFreeSeats += 1;
 	    wait_time = (rand() % 5) + 1;
-	    printf("\nBarber took a new customer, and he will take %d seconds for haircut\n",wait_time);
+	    printf("\n%sBarber took a new customer, and he will take %d seconds for haircut\n",CYAN, wait_time);
 	  	printf("Number of free seats: %d\n",numberOfFreeSeats);
 	    
 	    sem_post(&smfBarber);
@@ -42,25 +42,25 @@ void *barber(void *arg)
 void *customer(void *arg)
 {
     int id = *((int*)arg);
-    printf("Custome %d is created\n", id);
+    printf("%sCustome %d is created\n",GREEN, id);
 	   
 	sem_wait(&seatMutex); 
 	    
     if(numberOfFreeSeats <= 0)
     {
-	    printf("Customer %d left without haircut\n", id);
+	    printf("%sCustomer %d left without haircut\n",RED, id);
 	    sem_post(&seatMutex); 
     }
     else
     {
 	    numberOfFreeSeats -= 1;
-	    printf("Customer %d is waiting\n", id);
-	    printf("Number of free seats: %d\n",numberOfFreeSeats);
+	    printf("%sCustomer %d is waiting\n", YELLOW, id);
+	    printf("%sNumber of free seats: %d\n", WHITE, numberOfFreeSeats);
 	   
 	    sem_post(&customers); 
 	    sem_post(&seatMutex); 
 	    sem_wait(&smfBarber); // wait for barber
-	    printf("Customer %d get a haircut\n", id);
+	    printf("%sCustomer %d got a haircut\n", GREEN, id);
 	    // increse the number of customers who get haircut
 	    getHCn += 1;
     }
@@ -70,7 +70,7 @@ void *customer(void *arg)
 
 void sleeping_barber() 
 {
-    printf("Enter the number of free seats: ");
+    printf("%sEnter the number of free seats: ", WHITE);
     scanf("%d",&numberOfFreeSeats);
     printf("Enter the customers count: ");
     scanf("%d",&customersCount);
@@ -83,7 +83,7 @@ void sleeping_barber()
     // Creating barber thread
     flag_barber_thread = true;
     pthread_create(&barberThread, NULL, barber, NULL);
-    printf("Barber has been created\n");
+    printf("%sBarber has been created\n", CYAN);
     int id[customersCount];
     int spread;
     // Creating customers threads
@@ -100,7 +100,7 @@ void sleeping_barber()
     }
     flag_barber_thread = false;
     pthread_join(barberThread, NULL);   
-    printf("%d out of %d customers get haircut\n",getHCn,customersCount);
+    printf("%s %d out of %d customers got haircut\n",GREEN, getHCn,customersCount);
     
     sem_destroy(&seatMutex);
     sem_destroy(&customers);
