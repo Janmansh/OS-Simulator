@@ -5,14 +5,14 @@ using namespace std;
 void disk_clook()
 {
 	int n, track;
-	cout<<"\nEnter Number Of Requests : ";
+	cout<<WHITE<<"\nEnter Number Of Requests : ";
 	cin>>n;
 	cout<<"\nEnter Number Of Tracks : ";
 	cin>>track;
 	int req[n+1];
-	cout<<"\nEnter Current Postions of R/W Head : ";
+	cout<<GREEN<<"\nEnter Current Postions of R/W Head : ";
 	cin>>req[0];
-	cout<<"\nEnter the Requests\n";
+	cout<<CYAN<<"\nEnter the Requests\n";
 	for(int i = 1; i <= n; i++)
 	cin>>req[i];
 	
@@ -25,7 +25,7 @@ void disk_clook()
 			pos = i;
 	}
 	
-	cout<<"\nHead Movement\n";
+	cout<<GREEN<<"\nHead Movement\n";
 	for(int i = pos-1; i >= 0; i--) // left
 	{
 		cout<<req[i+1]<<"->"<<req[i]<<" : "<<abs(req[i+1]-req[i])<<"\n";
@@ -44,7 +44,7 @@ void disk_clook()
 		seek += abs(req[i] - req[i-1]);
 	}
 		
-	cout<<"\nTotal Head Movement : "<<seek;
+	cout<<CYAN<<"\nTotal Head Movement : "<<seek;
 }
 
 /*int main()

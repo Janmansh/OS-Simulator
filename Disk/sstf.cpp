@@ -5,12 +5,12 @@ using namespace std;
 void disk_sstf()
 {
 	int n;
-	cout<<"\nEnter Number Of Requests : ";
+	cout<<WHITE<<"\nEnter Number Of Requests : ";
 	cin>>n;
 	int req[n+1];
 	cout<<"\nEnter Current Postions of R/W Head : ";
 	cin>>req[0];
-	cout<<"\nEnter the Requests\n";
+	cout<<CYAN<<"\nEnter the Requests\n";
 	for(int i = 1; i <= n; i++)
 	cin>>req[i];
 	
@@ -19,7 +19,7 @@ void disk_sstf()
 	memset(done, 0, sizeof(done));
 	done[0] = 1;
 	
-	cout<<"\nHead Movement\n";
+	cout<<GREEN<<"\nHead Movement\n";
 	for(int i = 1; i <= n; i++)
 	{
 		int idx, small = 1e5;
@@ -37,7 +37,7 @@ void disk_sstf()
 		prev = req[idx];
 	}
 	
-	cout<<"\nTotal Head Movement : "<<seek;
+	cout<<CYAN<<"\nTotal Head Movement : "<<seek;
 }
 /*
 int main()
