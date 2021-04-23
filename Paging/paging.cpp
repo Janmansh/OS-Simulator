@@ -45,7 +45,7 @@ void lru(int num_frames){
     {
         // Get user Input
         cout << "Your choice   : ";
-        scanf("%c",&choice);
+        scanf("%c%c",&choice,&choice);
 
         // Switch Case of choices
         switch(choice){
@@ -162,7 +162,7 @@ void mru(int num_frames){
     {
         // Get user Input
         cout << "Your choice   : ";
-        scanf("%c",&choice);
+        scanf("%c%c",&choice,&choice);
 
         // Switch Case of choices
         switch(choice){
@@ -275,7 +275,7 @@ void fifo(int num_frames){
     {
         // Get user Input
         cout << "Your choice   : ";
-        scanf("%c",&choice);
+        scanf("%c%c",&choice,&choice);
         switch(choice){
             case '1':
                 cout << "Enter Page id : ";
