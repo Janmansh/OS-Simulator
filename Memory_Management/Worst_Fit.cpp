@@ -9,7 +9,7 @@ struct process{
     int end;
 }p1[100];
 
-vector <pair<int,int>> empty_slots;
+vector <pair<int,int>> empty_slots1;
 
 void insert()
 {
@@ -23,7 +23,7 @@ void insert()
     int min_starting=5000;
     int worst_size=-1;
     int total_empty=0;
-    for(auto a=empty_slots.begin();a!=empty_slots.end();a++)
+    for(auto a=empty_slots1.begin();a!=empty_slots1.end();a++)
     {
         if(p1[i].tot_size<=(a->second)-(a->first))
         {
@@ -54,17 +54,17 @@ void insert()
         p1[i].end=0;
     }
     else{
-        for(auto a=empty_slots.begin();a!=empty_slots.end();a++)
+        for(auto a=empty_slots1.begin();a!=empty_slots1.end();a++)
         {
             if(a->first==min_starting)
             {
                 p1[i].starting=min_starting;
                 p1[i].end=min_starting+p1[i].tot_size;
                 int to_be_inserted=a->second;
-                empty_slots.erase(a);
+                empty_slots1.erase(a);
                 if(p1[i].end!=to_be_inserted)
                 {
-                    empty_slots.push_back(make_pair(p1[i].end,to_be_inserted));
+                    empty_slots1.push_back(make_pair(p1[i].end,to_be_inserted));
                 }
                 cout<<GREEN "Process inserted successfully. START: "<<p1[i].starting<<" END:"<<p1[i].end<< RESET <<endl;
                 break;
@@ -86,24 +86,24 @@ void del()
         cout<<"Process not in memory"<<endl;
         return;
     }
-    for(auto a=empty_slots.begin();a!=empty_slots.end();a++)
+    for(auto a=empty_slots1.begin();a!=empty_slots1.end();a++)
     {
         if(a->first==p1[i].end)
         {
             p1[i].end=a->second;
-            empty_slots.erase(a);
+            empty_slots1.erase(a);
             a--;
         }
         if(a->second==p1[i].starting)
         {
             p1[i].starting=a->first;
-            empty_slots.erase(a);
+            empty_slots1.erase(a);
             a--;
         }
         p1[i].id=-1;
         p1[i].tot_size=0;
     }
-    empty_slots.push_back(make_pair(p1[i].starting,p1[i].end));
+    empty_slots1.push_back(make_pair(p1[i].starting,p1[i].end));
     cout<<GREEN "Process removed successfully" RESET <<endl;
 }
 
@@ -127,7 +127,7 @@ void display()
     	cout<<MAGENTA "No process in memory" RESET<<endl;
     
     // if no slots are empty
-    if(empty_slots.empty())
+    if(empty_slots1.empty())
     {
         cout<<RED "Memory is full. Delete processes to accomodate new ones" RESET<<endl;
         return;
@@ -135,7 +135,7 @@ void display()
     
     //
     cout<<CYAN "\nThe empty partitions in memory are " RESET<<endl;
-    for(auto a=empty_slots.begin();a!=empty_slots.end();a++)
+    for(auto a=empty_slots1.begin();a!=empty_slots1.end();a++)
     {
         cout<<YELLOW "START: "<<a->first<<" END: "<<a->second<< RESET <<endl;
     }         
@@ -152,7 +152,7 @@ int Worst_Fit(){
     cin >>memory_size;
 
     // create empty slot of full memory size
-    empty_slots.push_back(make_pair(0,memory_size));
+    empty_slots1.push_back(make_pair(0,memory_size));
     
     int choice=1;
     

@@ -1,10 +1,4 @@
-/******************************************************************************
 
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
 
 #include <stdio.h>
 #include <unistd.h>
@@ -25,7 +19,7 @@ bool flag_barber_thread;
 pthread_t barberThread;          
 pthread_t customersThreads[20];    
 
-void *barber()
+void *barber(void *arg)
 {
     int wait_time;
     
@@ -41,7 +35,8 @@ void *barber()
 	    sem_post(&smfBarber);
 	    sem_post(&seatMutex);
 	    sleep(wait_time);
-    } 
+    }
+    return NULL; 
 }
 
 void *customer(void *arg)
@@ -69,6 +64,7 @@ void *customer(void *arg)
 	    // increse the number of customers who get haircut
 	    getHCn += 1;
     }
+    return NULL;
 }
 
 

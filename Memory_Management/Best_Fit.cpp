@@ -175,9 +175,7 @@ void display_mvt_best()
 // MAIN DRIVER CODE
 int Best_Fit(){
     int memory_size;
-    cout << "Program to illustratve MVT partitioning Scheme"<< endl;
-    cout << " * Author : Addhyan Malhotra\n";	
-    cout << " * Roll   : 191CS202\n\n";
+    cout << UN << "Program to illustratve MVT partitioning Scheme" RESET << endl;
     cout<<" Enter size of main memory :	";
     
     cin >>memory_size;

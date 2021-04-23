@@ -10,18 +10,11 @@
 
 #define BufSize 5
 
-typedef struct
-{
-    int p_no;
-    char type;
-    int AT;
-    int BT;
-}process;
 
 typedef struct{
 
     //Pointer to the array that will contain the processes
-    process *ar;
+    PS_process *ar;
     int n;
 
     //Creating a pointer to point to an array of thread IDs
@@ -36,7 +29,7 @@ typedef struct{
 
 }PC_global;
 
-int nextin= 0, nextout= 0, count= 0;
+int nextin= 0, nextout= 0, PC_count= 0;
 char BUF[BufSize];
 
 int PC_get_index(PC_global *globals, pthread_t KEY)
@@ -60,7 +53,7 @@ void* PC_Producer(void *arg)
 {
     PC_global *globals = (PC_global*)arg;
 
-    //Getting the process number of the current thread
+    //Getting the PS_process number of the current thread
     pthread_t currID = pthread_self();
     int index = PC_get_index(globals, currID);
     int p_no = globals->ar[index].p_no;
@@ -70,7 +63,7 @@ void* PC_Producer(void *arg)
     pthread_mutex_lock(&globals->mutex);
 
     //Checking if there is space on the buffer
-    while(count >= BufSize)
+    while(PC_count >= BufSize)
     {
         //Wait for a signal from customer that a slot is empty, and release the mutex.
         printf("\nBuffer is full. Producer (p_no = %d) is waiting for consumption", p_no);
@@ -79,7 +72,7 @@ void* PC_Producer(void *arg)
 
     //Since the return from function pthread_cond_wait() maybe due to spurious wakeups
     //we must manually check if a slot is free
-    assert(count < BufSize);
+    assert(PC_count < BufSize);
 
     
     //Acquiring item and adding it to the buffer
@@ -91,7 +84,7 @@ void* PC_Producer(void *arg)
     BUF[nextin] = ITEM;
     
     nextin = (nextin + 1)%BufSize;
-    count++;
+    PC_count++;
 
     //Signalling waiting customers of product addition
     pthread_cond_signal(&globals->filled);
@@ -106,7 +99,7 @@ void* PC_Consumer(void *arg)
 {
     PC_global *globals = (PC_global*)arg;
     
-    //Getting the process number of the current thread
+    //Getting the PS_process number of the current thread
     pthread_t currID = pthread_self();
     int index = PC_get_index(globals, currID);
     int p_no = globals->ar[index].p_no;
@@ -116,7 +109,7 @@ void* PC_Consumer(void *arg)
     pthread_mutex_lock(&globals->mutex);
 
     //Checking if there is a product on the buffer
-    while(count <= 0)
+    while(PC_count <= 0)
     {
         //Wait for a signal from the producer indicating a product is added, and release the mutex
         printf("\nBuffer is empty. Consumer (p_no = %d) is waiting for a product to be added", p_no);
@@ -124,7 +117,7 @@ void* PC_Consumer(void *arg)
     }
 
     //Using assert to account for spurious wakeups
-    assert(count > 0);
+    assert(PC_count > 0);
 
     //Consuming item
     char ITEM = BUF[nextout];
@@ -134,7 +127,7 @@ void* PC_Consumer(void *arg)
     BUF[nextout] = (char)0;
 
     nextout = (nextout + 1)%BufSize;
-    count--;
+    PC_count--;
 
     //Signalling waiting producers of free slot
     pthread_cond_signal(&globals->empty);
@@ -145,7 +138,7 @@ void* PC_Consumer(void *arg)
     pthread_exit(NULL);
 }
 
-void PC_Sort();
+void PC_Sort(PC_global *globals);
 void PC_ProducerConsumerFCFS(PC_global *globals)
 {
 
@@ -208,7 +201,7 @@ void PC_inputProcessInfo(PC_global *globals)
     printf("\nEnter number of processes: ");
     scanf("%d", &globals->n);
 
-    globals->ar = (process*)malloc(sizeof(process)*globals->n);
+    globals->ar = (PS_process*)malloc(sizeof(PS_process)*globals->n);
 
     printf("\nEnter process details: ");
     for(i=0; i<globals->n; i++)
@@ -227,7 +220,7 @@ void PC_inputProcessInfo(PC_global *globals)
 
 } 
 
-void PC_DeepCopy(process *p1, process *p2)
+void PC_DeepCopy(PS_process *p1, PS_process *p2)
 {
     p1->p_no = p2->p_no;
     p1->AT = p2->AT;
@@ -238,7 +231,7 @@ void PC_DeepCopy(process *p1, process *p2)
 void PC_Sort(PC_global *globals)
 {
     int i, j, min;
-    process temp;
+    PS_process temp;
 
     for(i=0; i<globals->n-1; i++)
     {
@@ -284,10 +277,3 @@ void ProducerConsumer(){
 
 }
 
-int main()
-{
-    ProducerConsumer();
-
-    printf("\n\n");
-    return 0;
-}

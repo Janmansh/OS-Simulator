@@ -2,11 +2,10 @@
 #include "animations.cpp"
 #include "Paging/paging.cpp"
 #include "Deadlock/banker_resource.cpp"
-#include "Memory_Management/Worst_Fit.cpp"
 #include "Memory_Management/Worst_Fit_f.cpp"
-#include "Memory_Management/Best_Fit.cpp"
-#include "Memory_Management/First_Fit.cpp"
-
+#include "Memory_Management/mvt_all.cpp"
+#include "Memory_Management/best_fit_mft.cpp"
+#include "Memory_Management/first_fit_mft.cpp"
 #include "Process_Scheduling/FCFS.cpp"
 #include "Process_Scheduling/SJF.cpp"
 #include "Process_Scheduling/Round_Robin.cpp"
@@ -16,7 +15,11 @@
 #include "Process_Scheduling/LRTF.cpp"
 #include "Process_Scheduling/SRTF.cpp"
 #include "Process_Scheduling/Priority_non_preemptive.cpp"
-
+#include "Process_Synchronization/DiningPhilosophers.c"
+#include "Process_Synchronization/ReadersWriters.c"
+#include "Process_Synchronization/ProducersConsumers.c"
+#include "Process_Synchronization/SleepingBarber.c"
+#include "Process_Synchronization/pc.c"
 #include "Disk/clook.cpp"
 #include "Disk/look.cpp"
 #include "Disk/cscan.cpp"
@@ -118,10 +121,10 @@ int main()
 			mem_animations();
 			cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl
 				 << endl;
-			cout << "\n 1. MFT [worst fit]" << endl;
-			cout << " 2. MVT [first fit]" << endl;
-			cout << " 3. MVT [worst fit]" << endl;
-			cout << " 4. MVT [best  fit]\n"
+			cout << "\n 1. MVT [All fits]" << endl;
+			cout << " 2. MFT [first fit]" << endl;
+			cout << " 3. MFT [worst fit]" << endl;
+			cout << " 4. MFT [best  fit]\n"
 				 << endl;
 			cout << " 9. TO EXIT**\n"
 				 << endl;
@@ -131,21 +134,16 @@ int main()
 			switch (algo)
 			{
 			case 1:
-				worst_fit_delete();
+				mvt_all_fit();
 				break;
 			case 2:
-				First_Fit();
+				first_fit_mft();
 				break;
 			case 3:
-				Worst_Fit();
+				worst_fit_delete();
 				break;
 			case 4:
-				Best_Fit();
-				break;
-			case 5:
-
-				break;
-			case 6:
+				best_fit_mft();
 				break;
 			}
 			cout << YELLOW "\n\nPress Any Key to continue : " RESET;
@@ -169,16 +167,16 @@ int main()
 			switch (algo)
 			{
 			case 1:
-				// TODO : Add call to PC
+				pc();
 				break;
 			case 2:
-				// TODO : Add RW();
+				ReadersWriters();
 				break;
 			case 3:
-				// TODO : Add SB();
+				sleeping_barber();
 				break;
 			case 4:
-				// TODO : Add DP();
+				Dining_Philosophers();
 				break;
 			}
 			cout << YELLOW "\n\nPress Any Key to continue : " RESET;

@@ -13,12 +13,12 @@ typedef struct
     char type;
     int AT;
     int BT;
-}process;
+}PS_process;
 
 typedef struct{
 
     //Pointer to the array that will contain the processes
-    process *ar;
+    PS_process *ar;
     int n;
 
     //Creating a pointer to point to an array of thread IDs
@@ -31,7 +31,7 @@ typedef struct{
 
 }RW_global;
 
-//Function to get the index in the process array based on thread ID
+//Function to get the index in the PS_process array based on thread ID
 int RW_get_index(RW_global *globals, pthread_t KEY)
 {
     int i, index = -1;
@@ -121,7 +121,7 @@ void* RW_Writer(void *arg)
     pthread_exit(NULL);
 }
 
-void RW_Sort();
+void RW_Sort(RW_global *globals);
 void RW_ReadersWritersFCFS(RW_global *globals)
 {
 
@@ -181,9 +181,9 @@ void RW_inputProcessInfo(RW_global *globals)
     printf("\nEnter number of processes: ");
     scanf("%d", &globals->n);
 
-    globals->ar = (process*)malloc(sizeof(process)*globals->n);
+    globals->ar = (PS_process*)malloc(sizeof(PS_process)*globals->n);
 
-    printf("\nEnter process details: ");
+    printf("\nEnter PS_process details: ");
     for(i=0; i<globals->n; i++)
     {
         globals->ar[i].p_no = i;
@@ -200,7 +200,7 @@ void RW_inputProcessInfo(RW_global *globals)
 
 } 
 
-void RW_DeepCopy(process *p1, process *p2)
+void RW_DeepCopy(PS_process *p1, PS_process *p2)
 {
     p1->p_no = p2->p_no;
     p1->AT = p2->AT;
@@ -211,7 +211,7 @@ void RW_DeepCopy(process *p1, process *p2)
 void RW_Sort(RW_global *globals)
 {
     int i, j, min;
-    process temp;
+    PS_process temp;
 
     for(i=0; i<globals->n-1; i++)
     {
@@ -254,12 +254,4 @@ void ReadersWriters(){
     RW_ReadersWritersFCFS(globals);
     
     RW_displayProcessInfo(globals);
-}
-
-int main()
-{
-    ReadersWriters();
-
-    printf("\n\n");
-    return 0;
 }

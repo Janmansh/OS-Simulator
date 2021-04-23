@@ -56,7 +56,7 @@ int main_animation() {
 
 int print_main_menu(){
     cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
-    cout << CYAN;
+    cout << BOLDWHITE;
     cout << " 1. Page Replacement Alhorithms"<<endl;
     cout << " 2. Deadlock Algorithms"<<endl;
     cout << " 3. Process Scheduling" << endl;
@@ -64,7 +64,7 @@ int print_main_menu(){
     cout << " 5. Process Syncronization" << endl;
     cout << " 6. Disk Scheduling" << endl;
 
-    cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
+    cout << " 9. Exit\n"<<endl;
     long int j=1 <<16;
     for (size_t i = 0; i < 40; i++)
     {

@@ -45,7 +45,7 @@ void lru(int num_frames){
     {
         // Get user Input
         cout << "Your choice   : ";
-        cin >> choice;
+        scanf("%c",&choice);
 
         // Switch Case of choices
         switch(choice){
@@ -152,7 +152,7 @@ void mru(int num_frames){
         frames[i]=nullptr;
     
     //  Print user menu.
-    cout << "\n" UN YELLOW "You Have Selected LRU Replacement Scheme" RESET<< endl;
+    cout << "\n" UN YELLOW "You Have Selected MRU Replacement Scheme" RESET<< endl;
     cout << "\n 1. Request Page"<<endl;
     cout << " 2. Stop Adding page\n"<<endl;
     cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
@@ -162,7 +162,7 @@ void mru(int num_frames){
     {
         // Get user Input
         cout << "Your choice   : ";
-        cin >> choice;
+        scanf("%c",&choice);
 
         // Switch Case of choices
         switch(choice){
@@ -275,7 +275,7 @@ void fifo(int num_frames){
     {
         // Get user Input
         cout << "Your choice   : ";
-        cin >> choice;
+        scanf("%c",&choice);
         switch(choice){
             case '1':
                 cout << "Enter Page id : ";
@@ -354,9 +354,9 @@ int paging () {
         cout << " 2. Least Recently Used [lru]"<<endl;
         cout << " 3. Most Recently Used  [mru]\n"<<endl;
 
-        cout << " **ANY OTHER KEY TO EXIT**\n"<<endl;
+        cout << " 9. To Exit*\n"<<endl;
         cout << "Your choice : ";
-        cin >> algo;
+        scanf("%d",&algo);
         switch(algo){
             case 1:
                 fifo(num_frames);

@@ -119,7 +119,7 @@ void worstfit(vector <Block*>& blocks, int largest_block, int unused){
                 continue;
             if(b->full)
                 remaining_size += b->size - b->used;
-            printf("PA%d size=%d used=%d process_id=%d internal_frag=%d\n",x++,b->size,b->used,b->pid,b->size - b->used);
+            printf("PA%d size=%d used=%d process_id=%d internal_frag=%d\n",x++,b->size,b->used,b->pid,((b->pid)==-1?0:b->size - b->used));
         }
         cout << "Unused Space = " << unused <<endl;
         cout << "Net Internal fragments = " << remaining_size <<endl<<endl;

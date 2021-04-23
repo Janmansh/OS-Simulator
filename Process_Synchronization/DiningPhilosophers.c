@@ -18,7 +18,7 @@ typedef struct{
     int state;
 
     pthread_cond_t available;
-}thread;
+}thread_dp;
 
 typedef struct{
 
@@ -26,7 +26,7 @@ typedef struct{
 
     int max_eat_time, max_think_time; //Maximum eating and thinking times
 
-    thread *phil;
+    thread_dp *phil;
 
     //Stores state of each chopstick
     int *chopsticks;
@@ -160,7 +160,7 @@ void DP_Initialize(DP_global *globals){
     scanf("%d", &globals->max_eat_time);
     globals->max_eat_time = (globals->max_eat_time >= 0)? globals->max_eat_time : 0;
 
-    globals->phil = (thread*)malloc(sizeof(thread)*globals->n);
+    globals->phil = (thread_dp*)malloc(sizeof(thread_dp)*globals->n);
     globals->chopsticks = (int*)malloc(sizeof(int)*globals->n);
 
     pthread_condattr_t attr;
@@ -208,10 +208,3 @@ void Dining_Philosophers(){
 
 }
 
-int main(){
-
-    Dining_Philosophers();
-
-    printf("\n");
-    return 0;
-}
