@@ -6,6 +6,7 @@
  *   
  * */
 #include <bits/stdc++.h>
+#include "optimal.cpp"
 
 using namespace std;
 
@@ -352,8 +353,8 @@ int paging () {
         cout << " \n" YELLOW UN "Choose Algorithm to simulate" RESET << endl <<endl;
         cout << "\n 1. First In First Out [fifo]"<<endl;
         cout << " 2. Least Recently Used [lru]"<<endl;
-        cout << " 3. Most Recently Used  [mru]\n"<<endl;
-
+        cout << " 3. Most Recently Used  [mru]"<<endl;
+        cout << " 4. Optimal  [opt]\n"<<endl;
         cout << " 9. To Exit*\n"<<endl;
         cout << "Your choice : ";
         scanf("%d",&algo);
@@ -367,6 +368,8 @@ int paging () {
                 break;
             case 3:
                 mru(num_frames);
+            case 4:
+                optimal(num_frames);
 
             default:
                 cout << "Exiting...\n";
