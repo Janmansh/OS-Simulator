@@ -6,7 +6,7 @@ Clone or download the repository. Compile using pthread and lrt libraries or run
 ```g++ driver.cpp -lrt -lpthread ```<br>
 ```./a.out```
 
-<br><br>
+<br>
 
 <table>
       <tr>
